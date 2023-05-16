@@ -1,8 +1,17 @@
-import MovieCard from "components/MovieCard/MovieCard";
-
+import React, { useRef } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import MovieCard from 'components/MovieCard/MovieCard';
 
 export const Movie = () => {
-    return <MovieCard />;
-}
+  const location = useLocation();
+  const backLinkRef = useRef(location.state?.from ?? '/');
 
-export default Movie
+  return (
+    <div>
+      <Link to={backLinkRef.current}>BACK</Link>
+      <MovieCard />
+    </div>
+  );
+};
+
+export default Movie;

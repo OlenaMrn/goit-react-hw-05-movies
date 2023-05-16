@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, Link, Outlet } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { useParams, Link, Outlet, useLocation} from 'react-router-dom';
 import { getMovieById } from 'API/movieApi';
 
 
 const MovieCard = () => {
   const { movieId } = useParams();
-  const [movie, setMovie] = useState(null);
+    const [movie, setMovie] = useState(null);
+    
+    // const BackLinkLocationRef = userRef(location.state ?.from. ?? './movies');
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -22,7 +24,7 @@ const MovieCard = () => {
 
   return (
     <div>
-      <h2>Movie Card for Movie ID: {movieId}</h2>
+      {/* <h2>Movie Card for Movie ID: {movieId}</h2> */}
       {movie && (
         <div>
           <h3>{movie.title}</h3>
