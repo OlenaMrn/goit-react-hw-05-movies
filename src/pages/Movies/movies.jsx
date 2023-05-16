@@ -1,23 +1,60 @@
-
+import React, { useState, useEffect } from 'react';
+import { useSearchParams, Link } from 'react-router-dom';
+import { getMoviesBySearch } from 'API/movieApi';
 
 const Movies = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [movies, setMovies] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
 
-// http запит з пошуком за змістом інпуту
+  const handleSearch = async () => {
+    try {
+      const response = await getMoviesBySearch(searchQuery);
+      setMovies(response.results);
+      setSearchParams({ query: searchQuery });
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
+  const handleInputChange = event => {
+    setSearchQuery(event.target.value);
+  };
 
-    return(
-        <div> <p>Search for movies</p>
-{/*        
-                <ul>
-                    <li>movie1</li>
-                    <li>movie1</li>
-                    <li>movie1</li>
-                    <li>movie1</li>
-                </ul> */}
-       </div>
-    )
+    const handleSearchButtonClick = event => {
+      event.preventDefault();
+      if (searchQuery) {
+        handleSearch();
+      }
+    };
 
-}
+  useEffect(() => {
+    // Отримання значення параметра 'query' з URL-адреси
+    const queryParam = searchParams.get('query');
+    // Оновлення пошукового рядка при завантаженні сторінки
+    if (queryParam) {
+      setSearchQuery(queryParam);
+    }
+  }, [searchParams]);
 
+  return (
+    <div>
+      <p>Search for movies</p>
+      <input type="text" value={searchQuery} onChange={handleInputChange} />
+      <button onClick={handleSearchButtonClick}>Search</button>
 
-export default Movies
+      {movies && movies.length === 0 && <p>No movies found</p>}
+
+      <ul>
+        {movies &&
+          movies.map(movie => (
+            <li key={movie.id}>
+              <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+            </li>
+          ))}
+      </ul>
+    </div>
+  );
+};
+
+export default Movies;
