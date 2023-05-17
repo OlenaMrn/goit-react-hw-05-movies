@@ -6,8 +6,10 @@ import { getMovieById } from 'API/movieApi';
 const MovieCard = () => {
   const { movieId } = useParams();
     const [movie, setMovie] = useState(null);
+
+
     
-    // const BackLinkLocationRef = userRef(location.state ?.from. ?? './movies');
+//   const BackLinkLocationRef = userRef(location.state ?.from. ?? './movies');
 
   useEffect(() => {
     const fetchMovie = async () => {

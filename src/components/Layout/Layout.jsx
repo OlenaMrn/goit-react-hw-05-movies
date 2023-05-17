@@ -1,16 +1,36 @@
-import { NavLink, Outlet } from "react-router-dom"
+import React from 'react';
+import { NavLink, Outlet, useLocation } from 'react-router-dom';
+import css from './Layout.module.css';
 
-export const Layout = () => {
-    return (
-        
-        <div>
-        <nav>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/movies">Movies</NavLink>
-            </nav>
-            <Outlet/>
-        </div>
-    )
-}
+const Layout = () => {
+  const location = useLocation();
 
-export default Layout
+  const getNavLinkClassName = path => {
+    return location.pathname === path ? css.activeNavLink : css.inactiveNavLink;
+  };
+
+  return (
+    <div className={css.container}>
+      <nav className={css.headerNav}>
+        <NavLink
+          exact
+          to="/"
+          className={getNavLinkClassName('/')}
+          activeClassName={css.activeNavLink}
+        >
+          <span className={css.navText}>Home</span>
+        </NavLink>
+        <NavLink
+          to="/movies"
+          className={getNavLinkClassName('/movies')}
+          activeClassName={css.activeNavLink}
+        >
+          <span className={css.navText}>Movies</span>
+        </NavLink>
+      </nav>
+      <Outlet />
+    </div>
+  );
+};
+
+export default Layout;

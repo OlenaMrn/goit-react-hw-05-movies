@@ -1,11 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { getMoviesBySearch } from 'API/movieApi';
+import { useLocation } from 'react-router-dom';
+
 
 const Movies = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [movies, setMovies] = useState(null);
-  const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams, setSearchParams] = useSearchParams();
+    
+    const location = useLocation();
+    const backLinkRef = useRef(location.state?.from ?? '/');
+
 
   const handleSearch = async () => {
     try {
@@ -39,6 +45,7 @@ const Movies = () => {
 
   return (
     <div>
+      <Link to={backLinkRef.current}>BACK</Link>
       <p>Search for movies</p>
       <input type="text" value={searchQuery} onChange={handleInputChange} />
       <button onClick={handleSearchButtonClick}>Search</button>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getTrendingMovies } from 'API/movieApi';
+import css from './Home.module.css'
 
 const Home = () => {
   const [films, setFilms] = useState([]);
@@ -16,13 +17,13 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Trending today</h2>
-      <ul>
+    <div className={css.container}>
+      <h2 className={css.sectionName}  >trending today</h2>
+      <ul className={css.filmsList}>
         {films.map(el => {
           return (
-            <li key={el.id}>
-              <Link to={`/movies/${el.id}`}>
+            <li className={css.filmListItem} key={el.id}>
+              <Link className={css.filmLink} to={`/movies/${el.id}`}>
                 {el.title ? el.title : el.name}
               </Link>
             </li>
