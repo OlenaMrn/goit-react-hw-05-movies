@@ -1,0 +1,85 @@
+.back {
+  color: white;
+  background-color: rgb(245, 107, 15);
+  font-size: 20px;
+  margin: 0;
+  display: block;
+
+  font-weight: 300;
+  width: 30px;
+  padding-left: 5px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+.backLink {
+  text-decoration: none;
+}
+
+
+.backLink :hover {
+  color:rgb(245, 107, 15);
+  background-color: rgb(218, 214, 214);
+}
+
+.icon {
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.search {
+  color: rgb(218, 214, 214);
+  font-size: 64px;
+  font-weight: 300;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+.input {
+    border: 1px solid rgb(218, 214, 214);
+    padding: 10px;
+    border-radius: 5px;
+    min-width: 220px;
+}
+
+.input :focus {
+     border: 1px solid rgb(245, 107, 15);
+}
+
+.searchButton{
+    background-color: rgb(245, 107, 15);
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+.filmListItem {
+list-style: none;
+font-size: 18px;
+padding-top: 30px;
+padding-bottom: 30px;
+margin-bottom: 0px;
+border-bottom: 1px solid rgb(218, 214, 214);
+margin-left: 5px;
+}
+
+.filmLink {
+    text-decoration:none ;
+    color: rgb(110, 109, 109);
+
+}
+
+.filmListItem :hover {
+    color:  rgb(245, 107, 15);
+    /* border-bottom: 2px solid rgb(245, 107, 15); */
+}
+
+.filmsList {
+  column-count: 2;
+  column-gap: 120px;
+  margin: 0;
+   padding: 0;
+}

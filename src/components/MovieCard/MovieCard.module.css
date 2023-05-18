@@ -1,0 +1,80 @@
+.sectionName {
+  color: white;
+  background-color: rgb(245, 107, 15);
+  font-size: 20px;
+  margin: 0;
+
+  font-weight: 300;
+  width: 160px;
+  padding-left: 5px;
+  padding-bottom: 5px;
+}
+
+.movieTitle {
+  font-size: 44px;
+  font-weight: 300;
+  margin: 0;
+  color: rgb(245, 107, 15);
+}
+
+.cardWrap {
+  padding-top: 30px;
+}
+
+.movieInfo {
+  font-size: 16px;
+
+  margin-bottom: 10px;
+
+  color: rgb(156, 155, 155);
+}
+
+.movieVote {
+  font-size: 18px;
+  font-weight: 600;
+  color: rgb(245, 107, 15);
+  margin-top: 20px;
+}
+
+.movieImg {
+  width: 300px;
+}
+
+.movieImgWrap {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid rgb(245, 107, 15);
+  display: flex;
+  column-count: 2;
+  column-gap: 120px;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.movieText {
+  font-size: 18px;
+  margin-bottom: 20px;
+  line-height: 1.4;
+  color: rgb(121, 119, 119);
+}
+
+.adLink {
+  color: white;
+  margin-right: 10px;
+  background-color: rgb(245, 107, 15);
+  font-size: 20px;
+
+  font-weight: 300;
+  width: 180px;
+  padding: 0 15px 5px 15px;
+
+  text-decoration: none;
+}
+
+.adLink :hover {
+    color:  rgb(245, 107, 15);
+    background-color:  rgb(218, 214, 214);
+}

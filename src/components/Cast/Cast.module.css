@@ -1,0 +1,20 @@
+.container {
+display: flex;
+flex-wrap: wrap;
+gap: 20px;
+justify-content: space-between;
+padding-top: 60px;  
+
+}
+
+.castImg {
+    width: 150px;
+    margin-bottom: 5px
+}
+
+.castName {
+    color: ;
+    font-size: 18px;
+    color: rgb(121, 119, 119);
+    margin-bottom: 20px;
+}

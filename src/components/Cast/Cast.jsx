@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieCast } from 'API/movieApi';
+import css from './Cast.module.css'
 
 export const Cast = () => {
   const { movieId } = useParams();
@@ -17,17 +18,18 @@ export const Cast = () => {
   }, [movieId]);
 
   return (
-    <div>
+    <div className={css.container}>
       {cast.length ? (
         cast.map(
           ({ original_name, profile_path }) =>
             profile_path && (
-              <div key={original_name}>
+              <div key={original_name} className={css.imageWrap}>
                 <img
                   src={`https://image.tmdb.org/t/p/w500${profile_path}`}
-                  alt={original_name}
+                            alt={original_name}
+                            className={css.castImg}
                 />
-                <p>{original_name}</p>
+                <p className={css.castName}>{original_name}</p>
               </div>
             )
         )

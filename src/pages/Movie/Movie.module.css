@@ -1,0 +1,27 @@
+.back {
+  color: white;
+  background-color: rgb(245, 107, 15);
+  font-size: 20px;
+  margin: 0;
+  display: block;
+
+  font-weight: 300;
+  width: 30px;
+  padding-left: 5px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+.backLink {
+  text-decoration: none;
+}
+
+.backLink :hover {
+  color:rgb(245, 107, 15);
+  background-color: rgb(218, 214, 214);
+}
+
+.icon {
+  margin-right: 10px;
+  font-size: 20px;
+}

@@ -2,16 +2,16 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { getMoviesBySearch } from 'API/movieApi';
 import { useLocation } from 'react-router-dom';
-
+import css from './Movies.module.css';
+import { CgArrowTopLeftO } from 'react-icons/cg';
 
 const Movies = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [movies, setMovies] = useState(null);
-    const [searchParams, setSearchParams] = useSearchParams();
-    
-    const location = useLocation();
-    const backLinkRef = useRef(location.state?.from ?? '/');
+  const [searchParams, setSearchParams] = useSearchParams();
 
+  const location = useLocation();
+  const backLinkRef = useRef(location.state?.from ?? '/');
 
   const handleSearch = async () => {
     try {
@@ -24,15 +24,15 @@ const Movies = () => {
   };
 
   const handleInputChange = event => {
+    event.preventDefault();
     setSearchQuery(event.target.value);
   };
 
-    const handleSearchButtonClick = event => {
-      event.preventDefault();
-      if (searchQuery) {
-        handleSearch();
-      }
-    };
+  const handleSearchButtonClick = event => {
+    if (searchQuery) {
+      handleSearch();
+    }
+  };
 
   useEffect(() => {
     // Отримання значення параметра 'query' з URL-адреси
@@ -41,22 +41,42 @@ const Movies = () => {
     if (queryParam) {
       setSearchQuery(queryParam);
     }
+    setSearchQuery('');
   }, [searchParams]);
 
   return (
     <div>
-      <Link to={backLinkRef.current}>BACK</Link>
-      <p>Search for movies</p>
-      <input type="text" value={searchQuery} onChange={handleInputChange} />
-      <button onClick={handleSearchButtonClick}>Search</button>
+      <Link to={backLinkRef.current} className={css.backLink}>
+        {' '}
+        <div className={css.back}>
+          <span className={css.icon}>
+            <CgArrowTopLeftO />
+          </span>
+          {/* <span>return back</span> */}
+        </div>
+      </Link>
+      <p className={css.search}>Let's search!</p>
+      <input
+        type="text"
+        className={css.input}
+        value={searchQuery}
+        onChange={handleInputChange}
+      />
+      <button className={css.searchButton} onClick={handleSearchButtonClick}>
+        Search
+      </button>
 
-      {movies && movies.length === 0 && <p>No movies found</p>}
+      {movies && movies.length === 0 && (
+        <p>No search results. Please, try again</p>
+      )}
 
-      <ul>
+      <ul className={css.filmList}>
         {movies &&
           movies.map(movie => (
-            <li key={movie.id}>
-              <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+            <li className={css.filmListItem} key={movie.id}>
+              <Link to={`/movies/${movie.id}`} className={css.filmLink}>
+                {movie.title}
+              </Link>
             </li>
           ))}
       </ul>

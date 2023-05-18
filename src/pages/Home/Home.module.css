@@ -1,61 +1,50 @@
 .container {
-    max-width: 1200px;
+  max-width: 1200px;
   height: 100vh;
   margin: 0 auto;
-  padding: 0 ;
+  padding: 0;
 }
 
 .sectionName {
- color: white;
- background-color:rgb(245, 107, 15); 
-    font-size: 20px;
-    margin: 0;
-   
- 
- font-weight: 300;
- width: 160px;
- padding-left: 5px;
- padding-bottom: 5px;
- 
-}
+  color: white;
+  background-color: rgb(245, 107, 15);
+  font-size: 20px;
+  margin: 0;
 
-.filmList {
-   
- 
+  font-weight: 300;
+  width: 160px;
+  padding-left: 5px;
+  padding-bottom: 5px;
 }
 
 .filmListItem {
-list-style: none;
-font-size: 18px;
-padding-top: 30px;
-padding-bottom: 30px;
-margin-bottom: 0px;
-border-bottom: 1px solid rgb(218, 214, 214);
-margin-left: 5px;
-
-
-
-
+  list-style: none;
+  font-size: 18px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-bottom: 0px;
+  border-bottom: 1px solid rgb(218, 214, 214);
+  margin-left: 5px;
 }
 
 .filmLink {
-    text-decoration:none ;
-    color: rgb(110, 109, 109);
-
+  text-decoration: none;
+  color: rgb(110, 109, 109);
 }
 
 .filmListItem :hover {
-    color:  rgb(245, 107, 15);
-    /* border-bottom: 2px solid rgb(245, 107, 15); */
+  color: rgb(245, 107, 15);
+  /* border-bottom: 2px solid rgb(245, 107, 15); */
 }
 
 .filmsList {
   column-count: 2;
   column-gap: 120px;
   margin: 0;
-   padding: 0;
+  padding: 0;
 }
 
-.filmListItem {
-
+ul {
+    margin: 0;
+    padding: 0;
 }

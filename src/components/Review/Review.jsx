@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieReviews } from 'API/movieApi';
+import css from './Review.module.css'
 
 export const Review = () => {
   const { movieId } = useParams();
@@ -17,16 +18,16 @@ export const Review = () => {
   }, [movieId]);
 
   return (
-    <div>
+    <div className={css.container}>
       {reviews.length ? (
         reviews.map(({ author, content }) => (
-          <div key={author}>
-            <p>{author}</p>
-            <p>{content}</p>
+          <div key={author} className={css.reviewWrap}>
+            <p className={css.reviewAuthor}>{author}</p>
+            <p className={css.reviewText}>{content}</p>
           </div>
         ))
       ) : (
-        <p>No Reviews Found</p>
+        <p className={css.reviewText}>No Reviews Found</p>
       )}
     </div>
   );
