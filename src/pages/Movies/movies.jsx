@@ -47,6 +47,8 @@ const Movies = () => {
     }
     setSearchQuery('');
   }, [searchParams]);
+    
+    
 
   return (
     <div>
