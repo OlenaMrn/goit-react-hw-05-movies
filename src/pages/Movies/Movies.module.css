@@ -74,7 +74,7 @@ margin-left: 5px;
 
 .filmListItem :hover {
     color:  rgb(245, 107, 15);
-    /* border-bottom: 2px solid rgb(245, 107, 15); */
+  
 }
 
 .filmsList {
