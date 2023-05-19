@@ -2,7 +2,7 @@
 display: flex;
 flex-wrap: wrap;
 gap: 20px;
-justify-content: space-between;
+/* justify-content: space-between; */
 padding-top: 60px;  
 
 }
@@ -14,7 +14,13 @@ padding-top: 60px;
 
 .castName {
     color: ;
-    font-size: 18px;
+    font-size: 14px;
     color: rgb(121, 119, 119);
     margin-bottom: 20px;
+}
+
+.reviewText {
+    font-size: 18px;
+    color: rgb(156, 155, 155);
+    text-align: justify;
 }

@@ -5,23 +5,25 @@ import css from './Movie.module.css'
 import { CgArrowTopLeftO } from 'react-icons/cg';
 
 export const Movie = () => {
-  const location = useLocation();
-  const backLinkRef = useRef(location.state?.from ?? '/');
+  
 
   return (
     <div>
-      <Link to={backLinkRef.current} className={css.backLink}>
-        {' '}
-        <div className={css.back}>
-          <span className={css.icon}>
-            <CgArrowTopLeftO />
-          </span>
-          {/* <span>return back</span> */}
-        </div>
-      </Link>
+    
       <MovieCard />
     </div>
   );
 };
 
 export default Movie;
+
+
+//   <Link to={backLinkRef.current} className={css.backLink}>
+//     {' '}
+//     <div className={css.back}>
+//       <span className={css.icon}>
+//         <CgArrowTopLeftO />
+//       </span>
+//       {/* <span>return back</span> */}
+//     </div>
+//   </Link>;

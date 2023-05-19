@@ -13,17 +13,16 @@ const Layout = () => {
     <div className={css.container}>
       <nav className={css.headerNav}>
         <NavLink
-          exact
           to="/"
           className={getNavLinkClassName('/')}
-          activeClassName={css.activeNavLink}
+          activeclassname={css.activeNavLink}
         >
           <span className={css.navText}>Home</span>
         </NavLink>
         <NavLink
           to="/movies"
           className={getNavLinkClassName('/movies')}
-          activeClassName={css.activeNavLink}
+          activeclassname={css.activeNavLink}
         >
           <span className={css.navText}>Movies</span>
         </NavLink>

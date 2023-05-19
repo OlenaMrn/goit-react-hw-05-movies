@@ -2,12 +2,16 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { getMovieById } from 'API/movieApi';
 import css from './MovieCard.module.css';
+import { CgArrowTopLeftO } from 'react-icons/cg';
 
 const MovieCard = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
 
-  //   const BackLinkLocationRef = userRef(location.state ?.from. ?? './movies');
+
+    
+ const location = useLocation();
+ const backLinkRef = useRef(location.state?.from || '/');  
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -27,6 +31,15 @@ const MovieCard = () => {
       {/* <h2>Movie Card for Movie ID: {movieId}</h2> */}
       {movie && (
         <div>
+          <Link to={backLinkRef.current} className={css.backLink}>
+            {' '}
+            <div className={css.back}>
+              <span className={css.icon}>
+                <CgArrowTopLeftO />
+              </span>
+              {/* <span>return back</span> */}
+            </div>
+          </Link>
           <div className={css.cardWrap}>
             <h3 className={css.movieTitle}>{movie.title}</h3>
 
@@ -41,13 +54,13 @@ const MovieCard = () => {
                 <p className={css.movieInfo}>
                   Release Date: {movie.release_date}
                 </p>
-                <p className={css.movieInfo}>
-                  <p className={css.movieVote}> Genres:</p>{' '}
-                  {movie.genres.map(genre => genre.name).join(', ')}
-                </p>
-                <p className={css.movieVote}>
-                  User Score: {movie.vote_average}
-                </p>
+               <div className={css.movieInfo}>
+  <p className={css.movieVote}> Genres:</p>{' '}
+  {movie.genres.map(genre => genre.name).join(', ')}
+</div>
+<p className={css.movieVote}>
+  User Score: {movie.vote_average}
+</p>
               </div>
             </div>
           </div>

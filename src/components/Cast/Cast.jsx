@@ -26,15 +26,15 @@ export const Cast = () => {
               <div key={original_name} className={css.imageWrap}>
                 <img
                   src={`https://image.tmdb.org/t/p/w500${profile_path}`}
-                            alt={original_name}
-                            className={css.castImg}
+                  alt={original_name}
+                  className={css.castImg}
                 />
                 <p className={css.castName}>{original_name}</p>
               </div>
             )
         )
       ) : (
-        <p>No Cast Found</p>
+        <p className={css.reviewText}>No Cast Found</p>
       )}
     </div>
   );

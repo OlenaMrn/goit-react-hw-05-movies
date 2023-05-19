@@ -8,7 +8,11 @@ import { CgArrowTopLeftO } from 'react-icons/cg';
 const Movies = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [movies, setMovies] = useState(null);
+
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const movieName = searchParams.get('query') || '';
+  console.log(movieName);
 
   const location = useLocation();
   const backLinkRef = useRef(location.state?.from ?? '/');
@@ -67,7 +71,7 @@ const Movies = () => {
       </button>
 
       {movies && movies.length === 0 && (
-        <p>No search results. Please, try again</p>
+        <p className={css.noResults}>No search results. Please, try again</p>
       )}
 
       <ul className={css.filmList}>
