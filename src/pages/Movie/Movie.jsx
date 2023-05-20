@@ -1,19 +1,16 @@
-import React from 'react';
+// import React from 'react';
+// import MovieCard from 'components/MovieDetails/MovieDetails';
 
-import MovieCard from 'components/MovieCard/MovieCard';
-
-
-
-export const Movie = () => {
+// export const Movie = () => {
   
 
-  return (
-    <div>
+//   return (
+//     <div>
     
-      <MovieCard />
-    </div>
-  );
-};
+//       <MovieCard />
+//     </div>
+//   );
+// };
 
-export default Movie;
+// export default Movie;
 

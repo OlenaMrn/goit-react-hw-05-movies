@@ -1,17 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { getMovieById } from 'API/movieApi';
-import css from './MovieCard.module.css';
+import css from './MovieDetails.module.css';
 import { CgArrowTopLeftO } from 'react-icons/cg';
 
 const MovieCard = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
 
-
-    
- const location = useLocation();
- const backLinkRef = useRef(location.state?.from || '/');  
+  const location = useLocation();
+  const backLinkRef = useRef(location.state?.from || '/');
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -54,13 +52,13 @@ const MovieCard = () => {
                 <p className={css.movieInfo}>
                   Release Date: {movie.release_date}
                 </p>
-               <div className={css.movieInfo}>
-  <p className={css.movieVote}> Genres:</p>{' '}
-  {movie.genres.map(genre => genre.name).join(', ')}
-</div>
-<p className={css.movieVote}>
-  User Score: {movie.vote_average}
-</p>
+                <div className={css.movieInfo}>
+                  <p className={css.movieVote}> Genres:</p>{' '}
+                  {movie.genres.map(genre => genre.name).join(', ')}
+                </div>
+                <p className={css.movieVote}>
+                  User Score: {movie.vote_average}
+                </p>
               </div>
             </div>
           </div>
