@@ -12,6 +12,7 @@ const Layout = () => {
   return (
     <div className={css.container}>
       <nav className={css.headerNav}>
+        
         <NavLink
           to="/"
           className={getNavLinkClassName('/')}
