@@ -17,13 +17,3 @@ export const Movie = () => {
 
 export default Movie;
 
-
-//   <Link to={backLinkRef.current} className={css.backLink}>
-//     {' '}
-//     <div className={css.back}>
-//       <span className={css.icon}>
-//         <CgArrowTopLeftO />
-//       </span>
-//       {/* <span>return back</span> */}
-//     </div>
-//   </Link>;
