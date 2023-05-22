@@ -2,43 +2,41 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams, Link, useLocation } from 'react-router-dom';
 import { getMoviesBySearch } from 'API/movieApi';
 import css from './Movies.module.css';
+import { ImSearch } from 'react-icons/im';
 
 const Movies = () => {
-  const [searchQuery, setSearchQuery] = useState('');
   const [movies, setMovies] = useState(null);
-
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
 
-  const handleSearch = async () => {
+  const handleSearch = async query => {
     try {
-      const response = await getMoviesBySearch(searchQuery);
+      const response = await getMoviesBySearch(query);
       setMovies(response.results);
-      setSearchParams({ query: searchQuery });
     } catch (error) {
       console.error(error);
     }
   };
 
+  useEffect(() => {
+    const query = searchParams.get('query');
+
+    if (query) {
+      handleSearch(query);
+    }
+  }, [searchParams]);
+
   const handleInputChange = event => {
     event.preventDefault();
-    setSearchQuery(event.target.value);
+    setSearchParams({ query: event.target.value });
   };
 
-  const handleSearchButtonClick = event => {
-    event.preventDefault();
-    if (searchQuery) {
-      handleSearch();
-    }
-  };
-
-  useEffect(() => {
-    const queryParam = searchParams.get('query');
-    if (queryParam) {
-      setSearchQuery(queryParam);
-    }
-    setSearchQuery('');
-  }, [searchParams]);
+  // const handleSearchButtonClick = () => {
+  //   const query = searchParams.get('query');
+  //   if (query) {
+  //     handleSearch(query);
+  //   }
+  // };
 
   return (
     <div>
@@ -46,12 +44,11 @@ const Movies = () => {
       <input
         type="text"
         className={css.input}
-        value={searchQuery}
+        value={searchParams.get('query') || ''}
         onChange={handleInputChange}
       />
-      <button className={css.searchButton} onClick={handleSearchButtonClick}>
-        Search
-      </button>
+      <ImSearch size={20} className={css.searchIcon} />
+
       {movies && movies.length === 0 && (
         <p className={css.noResults}>No search results. Please, try again</p>
       )}
@@ -64,7 +61,7 @@ const Movies = () => {
                 to={{
                   pathname: `/movies/${movie.id}`,
                   state: { from: location },
-                  search: `?query=${searchQuery}`,
+                  search: `?query=${searchParams.get('query')}`,
                 }}
                 className={css.filmLink}
               >

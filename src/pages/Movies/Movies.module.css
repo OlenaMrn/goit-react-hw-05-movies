@@ -37,11 +37,29 @@
 
 
 .input {
-    border: 1px solid rgb(218, 214, 214);
-    padding: 10px;
-    border-radius: 5px;
-    min-width: 220px;
+  border: 1px solid rgb(218, 214, 214);
+  padding: 10px;
+  border-radius: 5px;
+  min-width: 300px;
+  position: absolute;
+  
+  padding-right: 10px;
 }
+
+
+
+.searchIcon {
+  position: relative;
+  color: rgb(245, 107, 15);
+  top: 0;
+  left: 290px;
+  /* Adjust the right offset as needed */
+  transform: translateY(50%);
+  margin-right: 10px;
+}
+
+
+
 
 .input :focus {
      border: 1px solid rgb(245, 107, 15);
