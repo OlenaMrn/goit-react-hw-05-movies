@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { getTrendingMovies } from 'API/movieApi';
 import css from './Home.module.css';
 
@@ -42,6 +43,18 @@ const Home = () => {
       </ul>
     </div>
   );
+};
+
+
+Home.propTypes = {
+  films: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      release_date: PropTypes.string.isRequired,
+      first_air_date: PropTypes.string.isRequired,
+    })
+  ),
 };
 
 export default Home;

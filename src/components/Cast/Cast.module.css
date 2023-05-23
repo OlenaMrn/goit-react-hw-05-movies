@@ -27,3 +27,9 @@
 .loaderWrap {
   margin-top: 30px;
 }
+
+.noCastText {
+  margin-top: 30px;
+  font-size: 18px;
+  color: rgb(156, 155, 155);
+}

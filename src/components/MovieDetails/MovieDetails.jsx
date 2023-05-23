@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Suspense } from 'react';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 import { getMovieById } from 'API/movieApi';
 import css from './MovieDetails.module.css';
 import { CgArrowTopLeftO } from 'react-icons/cg';
@@ -86,6 +88,15 @@ const MovieCard = () => {
       )}
     </div>
   );
+};
+
+MovieCard.propTypes = {
+  movie: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+    })
+  ),
 };
 
 export default MovieCard;

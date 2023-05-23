@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 import { getMovieCast } from 'API/movieApi';
 import css from './Cast.module.css';
 import { OvalLoader } from 'components/Loader/Loader';
@@ -23,11 +25,15 @@ const Cast = () => {
   }, [movieId]);
 
   if (isLoading) {
-    return <div className={css.loaderWrap}><OvalLoader/></div>;
+    return (
+      <div className={css.loaderWrap}>
+        <OvalLoader />
+      </div>
+    );
   }
 
   if (cast.length === 0) {
-    return <p className={css.reviewText}>No Cast Found</p>;
+    return <p className={css.noCastText}>No Cast Found</p>;
   }
 
   return (
@@ -48,5 +54,16 @@ const Cast = () => {
     </div>
   );
 };
+
+Cast.propTypes = {
+  cast: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      original_name: PropTypes.string.isRequired,
+      profile_path: PropTypes.string.isRequired,
+    })
+  ),
+};
+
 
 export default Cast;

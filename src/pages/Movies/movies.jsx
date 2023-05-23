@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams, Link, useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { getMoviesBySearch } from 'API/movieApi';
 import css from './Movies.module.css';
 import { ImSearch } from 'react-icons/im';
@@ -75,5 +76,17 @@ const Movies = () => {
     </div>
   );
 };
+
+
+
+Movies.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+    })
+  ),
+};
+
 
 export default Movies;
