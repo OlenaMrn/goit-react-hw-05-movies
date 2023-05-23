@@ -24,3 +24,14 @@ padding-bottom: 30px;
     border-bottom: 1px solid rgb(218, 214, 214);
 
 }
+
+.loaderWrap {
+    margin-top: 30px;
+
+}
+
+.noReviewText {
+    margin-top: 30px;
+     font-size: 18px;
+    color: rgb(156, 155, 155);
+}

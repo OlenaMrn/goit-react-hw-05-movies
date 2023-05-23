@@ -1,6 +1,8 @@
 import React from 'react';
+import { Suspense } from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import css from './Layout.module.css';
+// import styled from 'styled-components';
 
 const Layout = () => {
   const location = useLocation();
@@ -9,10 +11,12 @@ const Layout = () => {
     return location.pathname === path ? css.activeNavLink : css.inactiveNavLink;
   };
 
+
+
+
   return (
     <div className={css.container}>
       <nav className={css.headerNav}>
-        
         <NavLink
           to="/"
           className={getNavLinkClassName('/')}
@@ -28,7 +32,9 @@ const Layout = () => {
           <span className={css.navText}>Movies</span>
         </NavLink>
       </nav>
-      <Outlet />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };

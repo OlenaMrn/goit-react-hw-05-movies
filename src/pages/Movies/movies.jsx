@@ -4,10 +4,12 @@ import { getMoviesBySearch } from 'API/movieApi';
 import css from './Movies.module.css';
 import { ImSearch } from 'react-icons/im';
 
+
 const Movies = () => {
   const [movies, setMovies] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
+ 
 
   const handleSearch = async query => {
     try {
@@ -20,9 +22,11 @@ const Movies = () => {
 
   useEffect(() => {
     const query = searchParams.get('query');
+    
 
     if (query) {
       handleSearch(query);
+      
     }
   }, [searchParams]);
 
@@ -34,6 +38,7 @@ const Movies = () => {
 
     setSearchParams({ query: event.target.value });
   };
+
 
   return (
     <div>

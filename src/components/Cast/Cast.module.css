@@ -1,26 +1,29 @@
 .container {
-display: flex;
-flex-wrap: wrap;
-gap: 20px;
-/* justify-content: space-between; */
-padding-top: 60px;  
-
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  /* justify-content: space-between; */
+  padding-top: 60px;
 }
 
 .castImg {
-    width: 150px;
-    margin-bottom: 5px
+  width: 150px;
+  margin-bottom: 5px;
 }
 
 .castName {
-    color: ;
-    font-size: 14px;
-    color: rgb(121, 119, 119);
-    margin-bottom: 20px;
+  color: ;
+  font-size: 14px;
+  color: rgb(121, 119, 119);
+  margin-bottom: 20px;
 }
 
 .reviewText {
-    font-size: 18px;
-    color: rgb(156, 155, 155);
-    text-align: justify;
+  font-size: 18px;
+  color: rgb(156, 155, 155);
+  text-align: justify;
+}
+
+.loaderWrap {
+  margin-top: 30px;
 }

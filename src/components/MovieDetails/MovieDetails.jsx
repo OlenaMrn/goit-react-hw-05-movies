@@ -1,16 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Suspense } from 'react';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { getMovieById } from 'API/movieApi';
 import css from './MovieDetails.module.css';
 import { CgArrowTopLeftO } from 'react-icons/cg';
+import placeholderImage from '../../img/NoPoster.webp';
 
 const MovieCard = () => {
-const { movieId } = useParams();
-const [movie, setMovie] = useState(null);
+  const { movieId } = useParams();
+  const [movie, setMovie] = useState(null);
 
-const location = useLocation();
+  const location = useLocation();
 
-const backLinkRef = useRef(location.state?.from || '/');
+  const backLinkRef = useRef(location.state?.from || '/');
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -24,6 +26,10 @@ const backLinkRef = useRef(location.state?.from || '/');
 
     fetchMovie();
   }, [movieId]);
+
+  const handleImageError = event => {
+    event.target.src = placeholderImage;
+  };
 
   return (
     <div>
@@ -45,6 +51,7 @@ const backLinkRef = useRef(location.state?.from || '/');
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                 alt={movie.title}
                 className={css.movieImg}
+                onError={handleImageError}
               />
               <div>
                 <p className={css.movieText}>{movie.overview}</p>
@@ -52,7 +59,7 @@ const backLinkRef = useRef(location.state?.from || '/');
                   Release Date: {movie.release_date}
                 </p>
                 <div className={css.movieInfo}>
-                  <p className={css.movieVote}> Genres:</p>{' '}
+                  <p className={css.movieVote}>Genres:</p>{' '}
                   {movie.genres.map(genre => genre.name).join(', ')}
                 </div>
                 <p className={css.movieVote}>
@@ -72,7 +79,9 @@ const backLinkRef = useRef(location.state?.from || '/');
             Review
           </Link>
 
-          <Outlet />
+          <Suspense fallback={<div>Loading subpage...</div>}>
+            <Outlet />
+          </Suspense>
         </div>
       )}
     </div>

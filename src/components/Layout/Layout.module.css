@@ -32,7 +32,10 @@
     color: white;
 }
 
-
+.active {
+  color:rgb(245, 107, 15);
+   text-decoration: none;
+}
 
 .activeNavLink {
   color:rgb(245, 107, 15);
@@ -51,3 +54,4 @@
 .inactiveNavLink :hover {
     color:rgb(245, 107, 15);
 }
+
