@@ -5,11 +5,12 @@ import css from './MovieDetails.module.css';
 import { CgArrowTopLeftO } from 'react-icons/cg';
 
 const MovieCard = () => {
-  const { movieId } = useParams();
-  const [movie, setMovie] = useState(null);
+const { movieId } = useParams();
+const [movie, setMovie] = useState(null);
 
-  const location = useLocation();
-  const backLinkRef = useRef(location.state?.from || '/');
+const location = useLocation();
+
+const backLinkRef = useRef(location.state?.from || '/');
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -26,11 +27,9 @@ const MovieCard = () => {
 
   return (
     <div>
-      {/* <h2>Movie Card for Movie ID: {movieId}</h2> */}
       {movie && (
         <div>
-          <Link to={backLinkRef.current} className={css.backLink}>
-            {' '}
+          <Link to={backLinkRef.current} state={{ from: location }}>
             <div className={css.back}>
               <span className={css.icon}>
                 <CgArrowTopLeftO />
@@ -66,14 +65,12 @@ const MovieCard = () => {
           {/* <p>Additional information</p> */}
 
           <Link to={`/movies/${movieId}/cast`} className={css.adLink}>
-            <span className={css.adLink}>Cast</span>
+            Cast
           </Link>
 
-          <span className={css.adLink}>
-            <Link to={`/movies/${movieId}/review`} className={css.adLink}>
-              Review
-            </Link>
-          </span>
+          <Link to={`/movies/${movieId}/review`} className={css.adLink}>
+            Review
+          </Link>
 
           <Outlet />
         </div>

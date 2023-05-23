@@ -4,12 +4,13 @@ import Movies from 'pages/Movies/movies';
 import Layout from './Layout/Layout';
 import Cast from './Cast/Cast';
 import Review from './Review/Review';
-// import Movie from 'pages/Movie/Movie';
 import MovieCard from './MovieDetails/MovieDetails';
+
+
 
 export const App = () => {
   return (
-    <div>
+    <>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
@@ -18,11 +19,10 @@ export const App = () => {
             <Route path="cast" element={<Cast />} />
             <Route path="review" element={<Review />} />
           </Route>
-          <Route path="*" element={<Home />}></Route>
+          <Route path="*" element={<h2>PAGE NOT FOUND</h2>} />
         </Route>
       </Routes>
-    </div>
+    </>
   );
 };
-
 

@@ -28,15 +28,12 @@ const Movies = () => {
 
   const handleInputChange = event => {
     event.preventDefault();
+    if (event.target.value === '') {
+      return setSearchParams({});
+    }
+
     setSearchParams({ query: event.target.value });
   };
-
-  // const handleSearchButtonClick = () => {
-  //   const query = searchParams.get('query');
-  //   if (query) {
-  //     handleSearch(query);
-  //   }
-  // };
 
   return (
     <div>
@@ -60,9 +57,9 @@ const Movies = () => {
               <Link
                 to={{
                   pathname: `/movies/${movie.id}`,
-                  state: { from: location },
                   search: `?query=${searchParams.get('query')}`,
                 }}
+                state={{ from: location }}
                 className={css.filmLink}
               >
                 {movie.title}
