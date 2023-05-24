@@ -4,7 +4,6 @@
   font-size: 20px;
   margin: 0;
   display: block;
-
   font-weight: 300;
   width: 30px;
   padding-left: 5px;
@@ -16,9 +15,8 @@
   text-decoration: none;
 }
 
-
-.backLink :hover {
-  color:rgb(245, 107, 15);
+.backLink:hover {
+  color: rgb(245, 107, 15);
   background-color: rgb(218, 214, 214);
 }
 
@@ -35,74 +33,71 @@
   margin-bottom: 20px;
 }
 
+.searchIcon {
+   color: rgb(218, 214, 214);
+}
 
 .input {
+  position: absolute;
   border: 1px solid rgb(218, 214, 214);
-  padding: 10px;
+  padding: 10px 10px 10px 40px;
   border-radius: 5px;
   min-width: 300px;
-  position: absolute;
-  
-  padding-right: 10px;
+  margin: 0;
 }
 
+.input:focus {
+  border: 1px solid rgb(245, 107, 15);
+}
 
-
-.searchIcon {
+.searchButton {
   position: relative;
+  top: 2px;
+  display: inline-block;
+  background-color:white;
+ color: rgb(218, 214, 214);
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+ 
+  text-align: center;
+ margin-left: 5px;
+  padding: 4px;
+}
+
+.searchButton :hover {
+ 
   color: rgb(245, 107, 15);
-  top: 0;
-  left: 290px;
-  /* Adjust the right offset as needed */
-  transform: translateY(50%);
-  margin-right: 10px;
-}
-
-
-
-
-.input :focus {
-     border: 1px solid rgb(245, 107, 15);
-}
-
-.searchButton{
-    background-color: rgb(245, 107, 15);
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    margin-left: 5px;
 }
 
 .filmListItem {
-list-style: none;
-font-size: 18px;
-padding-top: 30px;
-padding-bottom: 30px;
-margin-bottom: 0px;
-border-bottom: 1px solid rgb(218, 214, 214);
-margin-left: 5px;
+  list-style: none;
+  font-size: 18px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-bottom: 0px;
+  border-bottom: 1px solid rgb(218, 214, 214);
+  margin-left: 5px;
 }
 
 .filmLink {
-    text-decoration:none ;
-    color: rgb(110, 109, 109);
-
+  text-decoration: none;
+  color: rgb(110, 109, 109);
 }
 
-.filmListItem :hover {
-    color:  rgb(245, 107, 15);
-  
+.filmListItem:hover {
+  color: rgb(245, 107, 15);
 }
 
-.filmsList {
+.filmList {
   column-count: 2;
   column-gap: 120px;
   margin: 0;
-   padding: 0;
+  padding: 0;
 }
 
 .noResults {
-    margin-top: 20px;
-     color: rgb(110, 109, 109);
+  margin-top: 20px;
+  color: rgb(110, 109, 109);
 }

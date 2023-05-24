@@ -5,12 +5,11 @@ import { getMoviesBySearch } from 'API/movieApi';
 import css from './Movies.module.css';
 import { ImSearch } from 'react-icons/im';
 
-
 const Movies = () => {
   const [movies, setMovies] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
- 
+  const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearch = async query => {
     try {
@@ -23,34 +22,33 @@ const Movies = () => {
 
   useEffect(() => {
     const query = searchParams.get('query');
-    
 
     if (query) {
       handleSearch(query);
-      
     }
   }, [searchParams]);
 
-  const handleInputChange = event => {
-    event.preventDefault();
-    if (event.target.value === '') {
-      return setSearchParams({});
-    }
-
-    setSearchParams({ query: event.target.value });
+  const handleSearchButtonClick = () => {
+    setSearchParams({ query: searchQuery });
   };
 
+  const handleInputChange = event => {
+    setSearchQuery(event.target.value);
+  };
 
   return (
     <div>
       <p className={css.search}>Let's search!</p>
+
       <input
         type="text"
         className={css.input}
-        value={searchParams.get('query') || ''}
+        value={searchQuery}
         onChange={handleInputChange}
       />
-      <ImSearch size={20} className={css.searchIcon} />
+      <button className={css.searchButton} onClick={handleSearchButtonClick}>
+        <ImSearch size={20} className={css.searchIcon} />
+      </button>
 
       {movies && movies.length === 0 && (
         <p className={css.noResults}>No search results. Please, try again</p>
@@ -77,8 +75,6 @@ const Movies = () => {
   );
 };
 
-
-
 Movies.propTypes = {
   movies: PropTypes.arrayOf(
     PropTypes.shape({
@@ -87,6 +83,5 @@ Movies.propTypes = {
     })
   ),
 };
-
 
 export default Movies;
