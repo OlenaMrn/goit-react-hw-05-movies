@@ -28,7 +28,8 @@ const Movies = () => {
     }
   }, [searchParams]);
 
-  const handleSearchButtonClick = () => {
+  const handleSubmit = (event) => {
+     event.preventDefault();
     setSearchParams({ query: searchQuery });
   };
 
@@ -39,17 +40,17 @@ const Movies = () => {
   return (
     <div>
       <p className={css.search}>Let's search!</p>
-
-      <input
-        type="text"
-        className={css.input}
-        value={searchQuery}
-        onChange={handleInputChange}
-      />
-      <button className={css.searchButton} onClick={handleSearchButtonClick}>
-        <ImSearch size={20} className={css.searchIcon} />
-      </button>
-
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          className={css.input}
+          value={searchQuery}
+          onChange={handleInputChange}
+        />
+        <button type="submit" className={css.searchButton}>
+          <ImSearch size={20} className={css.searchIcon} />
+        </button>
+      </form>
       {movies && movies.length === 0 && (
         <p className={css.noResults}>No search results. Please, try again</p>
       )}
